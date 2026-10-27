@@ -1,0 +1,9 @@
+.git
+.env
+.env.*
+.docker.env*
+data
+node_modules
+.openai
+
+*.env

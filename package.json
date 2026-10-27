@@ -1,0 +1,26 @@
+{
+  "name": "agentguard",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "setup:local": "node scripts/setup-local.mjs",
+    "start:local": "node scripts/start-local.mjs",
+    "doctor": "node scripts/doctor.mjs",
+    "smoke:local": "node scripts/local-smoke.mjs",
+    "check:provider": "node scripts/check-provider.mjs",
+    "test": "node --test test.mjs http-test.mjs proxy-test.mjs ledger-test.mjs coding-test.mjs coding-http-test.mjs integration-test.mjs integration-http-test.mjs backend-regression-test.mjs telemetry-regression-test.mjs integration-regression-test.mjs frontend-regression-test.mjs console-api-test.mjs real-console-ui-test.mjs local-workflow-test.mjs provider-check-test.mjs && node ui-test.mjs && node usage-ui-test.mjs && node coding-ui-test.mjs && node integration-ui-test.mjs && node full-app-test.mjs && node local-acceptance-test.mjs && node ui-style-test.mjs",
+    "package": "node scripts/package-source.mjs",
+    "pretest": "node scripts/package-source.mjs"
+  },
+  "devDependencies": {
+    "@acemir/cssom": "0.9.32",
+    "linkedom": "0.18.14"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "dependencies": {
+    "better-sqlite3": "12.11.1"
+  }
+}

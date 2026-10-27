@@ -1,0 +1,33 @@
+name: agentguard
+
+services:
+  agentguard:
+    build: .
+    image: agentguard:local
+    init: true
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:${AGENTGUARD_PORT:-8080}:8080"
+    env_file:
+      - path: .docker.env
+        format: raw
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: "8080"
+    volumes:
+      - agentguard-data:/app/data
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://127.0.0.1:8080/api/session',{headers:{authorization:'Bearer '+process.env.ADMIN_KEY},signal:AbortSignal.timeout(3000)}).then(async r=>{if(!r.ok||!(await r.json()).storageReady)process.exit(1)}).catch(()=>process.exit(1))"
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  agentguard-data:
+    name: agentguard-data

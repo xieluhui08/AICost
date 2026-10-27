@@ -1,0 +1,27 @@
+.env
+.env.*
+!.env.example
+.docker.env*
+data/
+node_modules/
+.tmp-http-*/
+
+
+*.sqlite
+*.sqlite-wal
+*.sqlite-shm
+
+.tmp-coding-*/
+
+.tmp-integration-*/
+# Exported integration configuration fragments can contain credentials.
+*.env
+!.env.example
+
+.tmp-full-app-*/
+.tmp-release-*/
+
+.tmp-snapshot-*/
+.tmp-backend-regression-*/
+.tmp-keys-*/
+.tmp-proxy-failure-*/
